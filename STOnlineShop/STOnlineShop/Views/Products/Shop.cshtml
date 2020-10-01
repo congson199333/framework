@@ -1,0 +1,33 @@
+﻿@model PagedList.IPagedList<Model.EF.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //var listAll = (List<Model.EF.Product>)ViewBag.AllProducts;
+}
+<script src="~/Scripts/plugins/ckfinder/ckfinder.js"></script>
+
+
+
+
+<h2>Tất cả sản phẩm</h2>
+<div class="section-group">
+    @foreach (var item1 in Model)
+    {
+        var url = "/chi-tiet/" + item1.productId;
+    <div class="section">
+        
+        <a href="@url"><img src="@item1.img" alt="@item1.productName" width="250" height="300" /></a>
+        <h2><a href="@url"> @item1.productName </a></h2>
+        <div class="price">
+            <p><span>@item1.price</span></p>
+        </div>
+       
+    </div>
+    }
+        <div class="pt">
+            @Html.PagedListPager(Model, page => Url.Action("Shop", "Products", new { page }));
+           
+        </div>
+</div>
+

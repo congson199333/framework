@@ -1,0 +1,53 @@
+﻿@model Model.EF.AdminUser
+
+@{
+    /**/
+
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_admin.cshtml";
+}
+
+<h2>Thêm mới quản trị viên</h2>
+
+@using (Html.BeginForm("Create", "AdminUser", FormMethod.Post))
+{
+@Html.AntiForgeryToken()
+
+<div class="createUser">
+    
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.adminName, htmlAttributes: new { @class = "text" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.adminName, new { htmlAttributes = new {} })
+            @Html.ValidationMessageFor(model => model.adminName, "", new {  })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.adminPass, htmlAttributes: new { @class = "text" })
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.adminPass, new { htmlAttributes = new { } })
+            @Html.ValidationMessageFor(model => model.adminPass, "", new {})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "text" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.email, new { htmlAttributes = new {  } })
+            @Html.ValidationMessageFor(model => model.email, "", new { })
+        </div>
+    </div>
+
+    
+        
+            <input type="submit" value="Tạo mới" class="btn" />
+       
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

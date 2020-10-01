@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listNewProducts = (List<Model.EF.Product>)ViewBag.NewProducts;
+}
+
+<body>
+    
+
+    @section slide{
+
+
+        <div class="w3-content w3-section">
+            <img class="mySlides" src="~/Image/MySlider1.jpg" width="100%">
+            <img class="mySlides" src="~/Image/MySlider2.jpg" width="100%">
+            <img class="mySlides" src="~/Image/MySlider3.jpg" width="100%">
+        </div>
+
+        <script>
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) { myIndex = 1 }
+                x[myIndex - 1].style.display = "block";
+                setTimeout(carousel, 4000);
+            }
+        </script>
+
+
+    }
+
+        <br />
+    <div class="main">
+        <h2>Sản phẩm mới</h2>
+        <div class="section-group">
+            @foreach (var item in listNewProducts)
+            {
+                var url = "/chi-tiet/" + item.productId;
+                <div class="section">
+
+                    <a href="@url"><img src="@item.img" alt="@item.productName" width="250" height="300" /></a>
+                    <h2>  <a href="@url">@item.productName</a></h2>
+                    <div class="price">
+                        <p><span>@item.price</span></p>
+                    </div>
+                   
+                </div>
+            }
+        </div>
+
+    </div>
+ </body>

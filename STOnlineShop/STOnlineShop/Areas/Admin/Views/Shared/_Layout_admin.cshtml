@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Layout_admin</title>
+
+    <link href="~/Content/Admin-css.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    @*<script src="~/Areas/Admin/js/plugins/ckfinder/config.js"></script>*@
+
+</head>
+<body>
+    <header class="admin-header">
+        <a href=""> <img src="~/Image/Anita Black.png" alt="ST store" width="100" height="100   " /></a>
+
+    </header>
+    <div id="left">
+        <div >
+            <ul id="menu-left">
+                <li>
+                    <a href="/Admin/Home/Index">Trang chủ</a>
+                </li>
+                <li>
+                    <a href="/Admin/Product/Index">Sản phẩm</a>
+
+                    <ul id="menu-pro">
+                        <li><a href="/Admin/Product/Index">Tất cả sản phẩm</a></li>
+                        <li><a href="/Admin/Product/Create">Thêm sản phẩm</a></li>
+
+                    </ul>
+
+                </li>
+
+                <li><a href="/Admin/AdminUser/Create">Tạo người dùng</a></li>
+
+                <li>
+                    <a href="/Admin/Order/Index">Quản lý đặt hàng</a>
+                </li>
+                <li>
+                    @Html.ActionLink("Đăng xuất","Logout","AdminUser")
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    
+
+        @RenderBody()
+
+      
+    
+</body>
+</html>

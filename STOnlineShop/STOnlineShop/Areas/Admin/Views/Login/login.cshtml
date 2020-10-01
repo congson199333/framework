@@ -1,0 +1,49 @@
+﻿@model STOnlineShop.Areas.Admin.Models.LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>login</title>
+    <link href="~/Content/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div >
+        @using (Html.BeginForm("Login", "login", FormMethod.Post))
+        {
+            <table>
+
+                <form id="form-login" method="POST" accept-charset="utf-8">
+                    <tr>
+                        <td colspan="2" id="p"><p>Đăng nhập hệ thống</p></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Tên">Tên đăng nhập</label></td>
+                        <td>@Html.TextBoxFor(model => model.AdminName, new { @autofocus = "autofocus" })</td>
+                    </tr>
+                    <tr>
+                        <td><label for="MK">Mật khẩu</label></td>
+                        <td>@Html.PasswordFor(model => model.Password, new { @autofocus = "autofocus" })</td>
+                    </tr>
+                    
+                    <tr>
+                        <td >@Html.CheckBoxFor(model=>model.RememberMe, new { @id = "checkmark" })Nhớ tài khoản</td>
+                       
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="submit" id="submit" onclick="onFormSubmit()">Đăng nhập</button>
+                    </tr>
+                   
+
+                </form>
+            </table>
+
+        }
+
+    </div>
+</body>
+</html>

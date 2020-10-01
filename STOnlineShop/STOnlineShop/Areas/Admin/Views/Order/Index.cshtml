@@ -1,0 +1,59 @@
+﻿@model List<Model.EF.Oder>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_admin.cshtml";
+}
+
+<div id="content">
+    <table>
+
+        <tr>
+            <th> Ảnh sản phẩm</th>
+            <th>Mã order</th>
+            <th>Mã giao dịch</th>
+            <th>Mã sản phẩm</th>
+            <th>Giá sản phẩm</th>
+            <th>Số lượng</th>
+            <th>size</th>
+            <th>Trạng thái</th>
+            <th></th>
+
+        </tr>
+        @foreach (var item1 in Model)
+        {
+
+            <tr id="row_@item1.oderId">
+
+                <div class="section">
+                    <td>@item1.createDay</td>
+                    <td>@item1.oderId</td>
+                    <td>@item1.tranId</td>
+                    <td>@item1.productId</td>
+                    <td>@item1.price</td>
+                    <td>@item1.quatity</td>
+                    <td>@item1.size</td>
+                    <td>@item1.statusOrder</td>
+                    <div id="admin-group">
+                        <td>
+
+                            @Ajax.ActionLink("Xóa", "Delete", new { @id=item1.oderId},new AjaxOptions
+                       {
+                           Confirm = "Bạn có  muốn xóa bản ghi này ?",
+                           OnComplete = "$('#row_"+@item1.oderId+"').remove()",
+                           HttpMethod="Delete"
+                       })
+
+
+
+                            <a href="/Admin/Order/Edit/@item1.oderId">Sửa</a>|
+
+                        </td>
+                    </div>
+                </div>
+
+            </tr>
+        }
+    </table>
+
+
+   

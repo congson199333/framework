@@ -1,0 +1,31 @@
+﻿@model PagedList.IPagedList<Model.EF.Product>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Sale";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tất cả sản phẩm giảm giá</h2>
+<div class="section-group">
+    @foreach (var item1 in Model)
+    {
+        var url = "/chi-tiet/" + item1.productId;
+        <div class="section">
+
+            <a href="@url"><img src="@item1.img" alt="@item1.productName" width="250" height="300" /></a>
+            <h2><a href="@url"> @item1.productName </a></h2>
+            <div class="price">
+                <p><span>@item1.price</span></p>
+            </div>
+            <h3 style="color:#ff0000">@item1.priceSale</h3>
+           <p>Sản phẩm giảm giá: @(item1.sale*100)%</p>
+        </div>
+    }
+    <div class="pt">
+        @Html.PagedListPager(Model, page => Url.Action("Sale", "Products", new { page }));
+
+    </div>
+</div>
+
+

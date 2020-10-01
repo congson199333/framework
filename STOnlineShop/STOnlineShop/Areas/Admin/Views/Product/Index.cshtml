@@ -1,0 +1,185 @@
+﻿@model PagedList.IPagedList<Model.EF.Product>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_admin.cshtml";
+}
+
+
+
+<script src="~/Areas/Admin/js/plugins/ckfinder/ckfinder.js"></script>
+
+
+<div id="content">
+    <table>
+
+        <tr>
+            <th> Ảnh sản phẩm </th>
+            <th>ID</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá sản phẩm</th>
+            <th>Ngày đăng bán</th>
+            <th>Sale</th>
+            <th>Giá sale</th>
+
+            <th></th>
+
+        </tr>
+        @foreach (var item1 in Model)
+        {
+          
+            <tr id="row_@item1.productId">
+              
+                <div class="section">
+                    <td><img src="@item1.img" alt="@item1.productName" width="100" /></td>
+                    <td>@item1.productId</td>
+                    <td>@item1.productName</td>
+                    <td>@item1.price</td>
+                    <td>@item1.datem</td>
+                    <td>@item1.sale</td>
+                    <td>@item1.priceSale</td>
+                    <div id="admin-group">
+                        <td>
+
+                            @Ajax.ActionLink("Xóa", "Delete", new { @id=item1.productId},new AjaxOptions
+                       {
+                           Confirm = "Bạn có  muốn xóa bản ghi này ?",
+                           OnComplete = "$('#row_"+@item1.productId+"').remove()",
+                           HttpMethod="Delete"
+                       })
+
+
+
+                            <a href="/Admin/Product/Edit/@item1.productId">Sửa</a>|
+
+                        </td>
+                    </div>
+                </div>
+
+            </tr>
+        }
+    </table>
+    <div id="pt">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page } ))
+    </div>
+    <a  href="/Admin/Product/Create">Thêm sản phẩm</a>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h2>Quản lý ảnh</h2>
+            </div>
+            <div class="modal-body">
+                <div class="imagesList">
+
+                </div>
+                <input type="button" id="btnChooImages" class="btn btn-primary" value="Chọn ảnh" />
+                <input type="hidden" id="hidProductID" value="0" />
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSaveImages">Save</button>
+                <button type="button" id="btn-default" dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        var product = {
+            init: function () {
+                product.registerEvents();
+            },
+            registerEvents: function () {
+
+                $('.btn-images').off('click').on('click', function (e) {
+                    e.preventDefault();
+                    $('#myModal').modal('show');
+                    $('#hidProductID').val($(this).data('id'));
+                });
+
+                $('#btn-default').off('click').on('click', function () {
+                    $('#myModal').modal('hide');
+                });
+
+                $('#btnChooImages').off('click').on('click', function (e) {
+                    e.preventDefault();
+                    var finder = new CKFinder();
+                    finder.selectActionFunction = function (url) {
+                        $('.imagesList').append('<div style=" float:left"> <img src="' + url + '" width="100"<a href="#"><span width="15px" class="btn-deImage">&times;</span></a></div>');
+                        $('.btn-deImage').off('click').on('click', function (e) {
+                            e.preventDefault();
+                            $(this).parent().remove();
+                        })
+
+                    };
+                    finder.popup();
+                });
+                $('#btnSaveImages').off('click').on('click', function (e) {
+                    e.preventDefault();
+                    var images = [];
+                    var id = $('#hidProductID').val();
+                    $.each($('.imagesList img'), function (i, item) {
+                        images.push($(item).prop('src'));
+                    });
+                   
+                    Console.log(id);
+                    $.ajax({
+                        url: '/Admin/Product/SaveImages',
+                        type: 'POST',
+                        data: {
+                            id: id,
+                            images: JSON.stringify(images)
+                        },
+                        datatype: 'json',
+                        success: function (response) {
+                            if (response.status) {
+                                $('#myModal').modal('hide');
+                                $('.imagesList').html('');
+                                alert("Luu thanh cong");
+                            }
+                        }
+                    });
+
+
+                });
+
+            }
+
+            //loadImages: function () {
+            //    $.ajax({
+            //        url: '/Admin/Product/LoadImages',
+            //        type: 'GET',
+            //        data: {
+            //            id: $('hidProductID').val(),
+            //            images: JSON.stringify(images)
+            //        },
+            //        datatype: 'json',
+            //        success: function (response) {
+            //            if (response.status) {
+            //                var data = response.data;
+            //                var html = '';
+            //                $.each(data, function (i, item) {
+            //                    html = <div style=" float:left"> <img src="' + url + '" width="100"<a href="#"><span width="15px" class="btn-deImage">&times;</span></a></div >
+
+            //                })
+
+
+            //                $('#imagesList').html(html);
+
+            //                alert("Luu thanh cong");
+            //            }
+            //        }
+            //    });
+            //}
+        }
+        product.init();
+
+    </script>
+
+</div>

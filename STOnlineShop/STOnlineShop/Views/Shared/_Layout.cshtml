@@ -1,0 +1,103 @@
+﻿
+@{
+    Layout = null;
+
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/DACSS.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+   
+
+</head>
+<body>
+
+    <div>
+        <header>
+            <a href="/TrangChu/Index" title="ST store"><img src="~/Image/Anita Black.png" alt="Alternate Text" width="100" height="100" class="logo" /></a>
+
+
+            <div class="menu">
+                <ul>
+                    <li>
+                        <a href="/TrangChu/Index">Trang chủ</a>
+                    </li>
+
+
+                    <li>
+                        <a href="/Products/Shop">Shop</a>
+                        <ul class="sub-menu">
+                            <div id="menu1">
+                                <li><a href="/Products/brand3">Adidas</a></li>
+                                <li><a href="/Products/brand2">Fila</a></li>
+                                <li><a href="/Products/brand1">Nike</a></li>
+                             </div>
+
+                                @*<a href="#">Giày nữ</a>
+            <ul>
+                <li><a href="#">Adidas</a></li>
+                <li><a href="#">Nike</a></li>
+                <li><a href="#">Convert</a></li>
+
+            </ul>
+        <li>
+            <a href="#">Giày nam</a>
+            <ul>
+                <li><a href="#">Adidas</a></li>
+                <li><a href="#">Nike</a></li>
+                <li><a href="#">Convert</a></li>
+            </ul>*@
+
+                           
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="/Products/Sale">Sales</a>
+                    </li>
+                    <li>
+                        <a href="/HuongDan/HuongDan">Hướng dẫn</a>
+                    </li>
+                    <li>
+                        <a href="/TuyenDung/TuyenDung">Tuyển dụng</a>
+                    </li>
+
+                    <li>
+                        <a style="float:right;padding:5px 1px; border-radius: 10px;background-color:#acd9f5 ;border:1px solid #acd9f5;margin-left:300px;" href="/Cart/Index">Giỏ hàng</a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </header><!-- /header -->
+        <br />
+    </div>
+
+    @RenderSection("slide", required: false)
+    @RenderSection("HomeAdmin",required:false)
+
+    <div class="main">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <br>
+
+        <h3>Hãy lựa chọn theo phog cách của bạn | TS Sneaker </h3>
+        <p>Liên hệ với chúng tôi  </p>
+
+        <a href="#">&#9993;someone@example.com</a> |
+        <a href="#">facebook.com/www.ts.vn</a>
+    </footer>
+</body>
+</html>

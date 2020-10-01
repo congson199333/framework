@@ -1,0 +1,16 @@
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\bin\Debug\Model.dll.config
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\bin\Debug\Model.dll
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\bin\Debug\Model.pdb
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\bin\Debug\EntityFramework.dll
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\bin\Debug\EntityFramework.xml
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\obj\Debug\Model.dll
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\obj\Debug\Model.pdb
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\bin\Debug\PagedList.dll
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\bin\Debug\PagedList.Mvc.dll
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\bin\Debug\PagedList.xml
+C:\Users\Kim Thoa\source\repos\STOnlineShop\Model\bin\Debug\PagedList.Mvc.xml
